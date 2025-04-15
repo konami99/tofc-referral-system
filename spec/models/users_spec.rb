@@ -29,6 +29,21 @@ RSpec.describe User, type: :model do
   end
 
   describe 'status' do
+    describe 'referrals = 0' do
+      before do
+        u1.referrer = nil
+        u2.referrer = nil
+
+        u1.save
+        u2.save
+      end
+
+      it 'should show status bronze' do
+        expect(u3.referrals_count).to be 0
+        expect(u3.status).to be_nil
+      end
+    end
+
     describe 'referrals < 3' do
       before do
         u1.save
