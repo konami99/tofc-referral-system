@@ -1,0 +1,19 @@
+{
+  "name": "app",
+  "private": true,
+  "scripts": {
+    "build": "esbuild --bundle app/javascript/application.js --outdir=app/assets/builds --minify --sourcemap"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  },
+  "dependencies": {
+    "@hotwired/stimulus": "^3.2.2",
+    "@types/react": "^19.0.8",
+    "@types/react-dom": "^19.0.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.1.5",
+    "typescript": "^5.7.3"
+  }
+}
