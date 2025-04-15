@@ -1,7 +1,7 @@
 # Referral System
 
 ## Setup
-```
+```ruby
 bundle
 rails db:seed
 rails s
@@ -16,7 +16,7 @@ Rewards System is triggered after user is created. Referrer's `referrals_count` 
 
 There're three types of awards: bronze, silver and gold.
 
-```
+```ruby
 class User < ApplicationRecord
   after_create :award
 
@@ -42,3 +42,27 @@ class User < ApplicationRecord
   end
 end
 ```
+
+## Tests
+
+```ruby
+rspec
+```
+
+Tests have been written for `User` model and `UsersController`.
+
+## Basic Interface
+An users index page showing users, their referrals' names, and referrals count.
+
+A couple of optmisations have been done to avoid N + 1 queires:
+
+1. Eager loading referrals
+```
+@users = User.includes([ :referrals ])
+```
+2. Use `referrals_count` to store number of referrals, rather than doing `select count(*) from users where referred_by_id = ?` for each user.
+
+You will only see data when database is seeded: `rails db:seed`.
+
+![Screenshot 2025-04-16 at 07 52 55](https://github.com/user-attachments/assets/c2ee96d6-0d6e-4853-aa59-1c973dc4268b)
+
