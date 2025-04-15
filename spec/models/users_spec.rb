@@ -27,6 +27,94 @@ RSpec.describe User, type: :model do
     u2.referrer = u3
   end
 
+  describe 'status' do
+    describe 'referrals < 3' do
+      before do
+        u1.save
+        u2.save
+        u3.save
+      end
+
+      it 'should show status bronze' do
+        expect(u3.referrals_count).to be 2
+        expect(u3.status).to eq 'bronze'
+      end
+    end
+
+    describe 'referrals < 5' do
+      let(:u4) do
+        User.build(
+          name: 'u4',
+          email: 'u4@gmail.com'
+        )
+      end
+
+      let(:u5) do
+        User.build(
+          name: 'u5',
+          email: 'u5@gmail.com'
+        )
+      end
+
+      before do
+        u4.referrer = u3
+        u5.referrer = u3
+
+        u1.save
+        u2.save
+        u3.save
+        u4.save
+        u5.save
+      end
+
+      it 'should show status silver' do
+        expect(u3.referrals_count).to be 4
+        expect(u3.status).to eq 'silver'
+      end
+    end
+
+    describe 'referrals >= 5' do
+      let(:u4) do
+        User.build(
+          name: 'u4',
+          email: 'u4@gmail.com'
+        )
+      end
+
+      let(:u5) do
+        User.build(
+          name: 'u5',
+          email: 'u5@gmail.com'
+        )
+      end
+
+      let(:u6) do
+        User.build(
+          name: 'u6',
+          email: 'u6@gmail.com'
+        )
+      end
+
+      before do
+        u4.referrer = u3
+        u5.referrer = u3
+        u6.referrer = u3
+
+        u1.save
+        u2.save
+        u3.save
+        u4.save
+        u5.save
+        u6.save
+      end
+
+      it 'should show status gold' do
+        expect(u3.referrals_count).to be 5
+        expect(u3.status).to eq 'gold'
+      end
+    end
+  end
+
   describe 'conter cache' do
     before do
       u1.save
