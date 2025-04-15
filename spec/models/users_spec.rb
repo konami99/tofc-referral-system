@@ -50,6 +50,30 @@ RSpec.describe User, type: :model do
       end
     end
 
+    describe 'referral_codes are nil' do
+      before do
+        u1.referral_code = nil
+        u2.referral_code = nil
+      end
+
+      it 'should not throw error if referral_code are different' do
+        expect(u1.save).to be true
+        expect(u2.save).to be true
+      end
+    end
+
+    describe 'referral_codes are empty' do
+      before do
+        u1.referral_code = ''
+        u2.referral_code = ''
+      end
+
+      it 'should not throw error if referral_code are different' do
+        expect(u1.save).to be true
+        expect(u2.save).to be true
+      end
+    end
+
     describe 'referral_codes are not unique' do
       before do
         u1.referral_code = 'abc'

@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   has_many :referrals, class_name: "User", dependent: :destroy, inverse_of: :referrer
 
-  validates_uniqueness_of :referral_code
+  validates_uniqueness_of :referral_code, allow_nil: true, allow_blank: true
 end
