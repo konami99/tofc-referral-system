@@ -1,0 +1,14 @@
+<% @users.each do |user| %>
+  Name: <%= user.name %>
+  <br/>
+  Referrals:
+  <% user.referrals.each do |referral| %>
+    <%= referral.name %>
+  <% end %>
+  <br/>
+  Referrals Count:
+  <%= user.referrals_count %>
+  <br/>
+  -----------------------------
+  <br/>
+<% end %>

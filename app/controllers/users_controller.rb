@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.includes([ :referrals ])
+  end
+
   def create
     new_user = User.build(
       name: params[:user][:name],
