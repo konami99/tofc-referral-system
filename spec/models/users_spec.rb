@@ -27,6 +27,18 @@ RSpec.describe User, type: :model do
     u2.referrer = u3
   end
 
+  describe 'conter cache' do
+    before do
+      u1.save
+      u2.save
+      u3.save
+    end
+
+    it 'should return referrals_count' do
+      expect(u3.referrals_count).to be 2
+    end
+  end
+
   describe 'associations' do
     it 'should link to correct referrer' do
       expect(u1.referrer).to be u3
