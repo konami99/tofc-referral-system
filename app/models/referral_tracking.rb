@@ -1,3 +1,2 @@
 class ReferralTracking < ApplicationRecord
-
 end

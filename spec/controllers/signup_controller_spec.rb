@@ -8,8 +8,6 @@ RSpec.describe SignupController, type: :controller do
 
     it '' do
       post :create, params: { user: { name: 'test', email: 'test@g.com', referral_code: u2.referral_code } }
-    
-      
     end
   end
 end
