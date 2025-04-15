@@ -3,26 +3,27 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   let(:u1) do
     User.build(
-      name: 'richard',
+      name: 'u1',
       email: 'h@gmcil.com'
     )
   end
 
   let(:u2) do
     User.build(
-      name: 'bill',
+      name: 'u2',
       email: '2@gmail.com'
     )
   end
 
   let(:u3) do
     User.build(
-      name: 'tom',
+      name: 'u3',
       email: 't@gmail.com'
     )
   end
 
   before do
+    u3.save
     u1.referrer = u3
     u2.referrer = u3
   end
@@ -32,7 +33,6 @@ RSpec.describe User, type: :model do
       before do
         u1.save
         u2.save
-        u3.save
       end
 
       it 'should show status bronze' do
@@ -62,7 +62,6 @@ RSpec.describe User, type: :model do
 
         u1.save
         u2.save
-        u3.save
         u4.save
         u5.save
       end
@@ -102,7 +101,6 @@ RSpec.describe User, type: :model do
 
         u1.save
         u2.save
-        u3.save
         u4.save
         u5.save
         u6.save
@@ -119,7 +117,6 @@ RSpec.describe User, type: :model do
     before do
       u1.save
       u2.save
-      u3.save
     end
 
     it 'should return referrals_count' do
