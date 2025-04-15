@@ -1,22 +1,23 @@
-class SignupController < ApplicationController
+class UsersController < ApplicationController
   def create
     new_user = User.build(
       name: params[:user][:name],
       email: params[:user][:email]
     )
 
-    refferal_code = params[:user][:referral_code]
+    referral_code = params[:user][:referral_code]
 
-    if refferal_code
-      referrer = User.find_by(referral_code: refferal_code)
+    if referral_code
+      referrer = User.find_by(referral_code: referral_code)
 
       if referrer
         new_user.referrer = referrer
       else
-        # render edit with error message
-        render :edit, errors: [ "Invalid referral code" ]
+        return render :new, status: :unprocessable_entity
       end
     end
+
+    new_user.save
   end
 
   def new
