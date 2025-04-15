@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2025_04_11_031446) do
-  create_table "referral_trackings", force: :cascade do |t|
-    t.integer "referrer_id"
-    t.integer "referral_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+ActiveRecord::Schema[7.2].define(version: 2025_04_15_103822) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
