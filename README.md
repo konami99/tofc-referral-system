@@ -1,5 +1,7 @@
 # Referral System
 
+If you have trouble running this on local, please email richardchou89 (at) hotmail.com.
+
 ## Setup
 ```ruby
 bundle
@@ -14,7 +16,7 @@ rails s
 
 ## Rewards System
 
-Rewards System is triggered after user is created. Referrer's `referrals_count` will be incremented by 1.
+Rewards System is triggered after user is created. Referrer's `referrals_count` field will be incremented by 1.
 
 There're three types of awards: bronze, silver and gold.
 
