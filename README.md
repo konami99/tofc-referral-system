@@ -5,6 +5,7 @@ If you have trouble running this on local, please email richardchou89 (at) hotma
 ## Setup
 ```ruby
 bundle
+rails db:migrate RAILS_ENV=development
 rails db:seed
 rails s
 ```
